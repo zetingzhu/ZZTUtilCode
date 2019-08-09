@@ -3,7 +3,7 @@ package com.zzt.zztutillibrary;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.view.View;
 
 /**
@@ -11,7 +11,7 @@ import android.view.View;
  * Created by zeting
  * Date 19/5/19.
  */
-public class ViewSnapshot {
+public class ViewToBitmapUtil {
     /**
      * 传入view
      */
@@ -22,11 +22,11 @@ public class ViewSnapshot {
      */
     private float memoryFactor = 0.5f;
 
-    public ViewSnapshot(View view) {
+    public ViewToBitmapUtil(View view) {
         this(view, 0.5f);
     }
 
-    public ViewSnapshot(View view, float factor) {
+    public ViewToBitmapUtil(View view, float factor) {
         this.view = view;
         this.memoryFactor = (factor > 0.9f || factor < 0.1f)? 0.5f: factor;
     }

@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">ZZTUtilCode</string>
+
+    <string name="util_title_1">Glide 使用源码</string>
+    <string name="util_title_2">View 转 Bitmap </string>
+    <string name="util_title_2_desc">里面包含了 PermissionUtils 权限申请的使用</string>
+
+
+    <string name="util_title_3">线程池执行定时器</string>
+
+    <string name="permission_rationale_message">You have rejected us to apply for authorization, please agree to authorization, otherwise the function can\'t be used normally!</string>
+
+    <string name="permission_denied_forever_message">We need some of the permissions you rejected or the system failed to apply failed, please manually set to the page authorize, otherwise the function can\'t be used normally!</string>
+
 </resources>
