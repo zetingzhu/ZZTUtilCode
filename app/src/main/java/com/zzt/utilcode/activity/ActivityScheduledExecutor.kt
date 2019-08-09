@@ -34,18 +34,13 @@ class ActivityScheduledExecutor : BaseActivity(){
     }
 
     private fun initView() {
-        mScheduledExecutorManager = ScheduledExecutorManager(3 )
+        mScheduledExecutorManager = ScheduledExecutorManager()
         LogUtils.dTag(TAG , "开始执行线程" )
         mScheduledExecutorManager!!.scheduleAtFixedRate({
-
             var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault() )
-//            LogUtils.dTag(TAG , "执行线程时间 1 " + sdf.format( System.currentTimeMillis() ) )
             Log.d(TAG , "执行线程时间 1 :" + sdf.format( System.currentTimeMillis() ) )
-
             TimeUnit.SECONDS.sleep(5 )
         }, 1 , 4 , TimeUnit.SECONDS )
-
-
     }
 
     private fun initView1() {

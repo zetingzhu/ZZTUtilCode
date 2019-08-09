@@ -78,6 +78,7 @@ class ActivityViewToBitmap : AppCompatActivity() {
 
     private fun initView() {
 
+        // 初始化view
         val snapshot = ViewToBitmapUtil(ll_save_view)
         val bitmap  = snapshot.getBitmap(  this@ActivityViewToBitmap , 300 , 500 )
 
@@ -88,9 +89,10 @@ class ActivityViewToBitmap : AppCompatActivity() {
 
         // 保存图片到本地
         iv_save.setOnClickListener {
+            // 初始化view
             val snapshot = ViewToBitmapUtil(ll_save_view)
+            // 将view 转换成 bitmap
             val bitmapSrc  = snapshot.apply()
-//            getBitmap(  this@ActivityViewToBitmap , 300 , 500 )
 
             //系统相册目录
             val path = File.separator + Environment.DIRECTORY_DCIM + File.separator + "Camera" + File.separator
