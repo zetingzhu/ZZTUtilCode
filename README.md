@@ -1,6 +1,11 @@
 
 # android 工具类代码整理
 
+## ByteUtils
+byte hex int String 数据处理 --> [ByteUtils][ByteUtils.java]
+```
+```
+
 ## ViewToBitmapUtil
 将view 根据内存大小来转换成bitmap --> [ViewToBitmapUtil][viewtobitmaputil.java]
 ```
@@ -47,4 +52,5 @@
 
 [viewtobitmaputil.java]: https://github.com/zetingzhu/ZZTUtilCode/blob/master/zztutillibrary/src/main/java/com/zzt/zztutillibrary/ViewToBitmapUtil.java
 [ScheduledExecutorManager.java]: https://github.com/zetingzhu/ZZTUtilCode/blob/master/zztutillibrary/src/main/java/com/zzt/zztutillibrary/ScheduledExecutorManager.java
+[ByteUtils.java]: https://github.com/zetingzhu/ZZTUtilCode/blob/master/zztutillibrary/src/main/java/com/zzt/zztutillibrary/ByteUtils.java
 
