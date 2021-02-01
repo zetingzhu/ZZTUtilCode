@@ -54,3 +54,67 @@ byte hex int String 数据处理 --> [ByteUtils][ByteUtils.java]
 [ScheduledExecutorManager.java]: https://github.com/zetingzhu/ZZTUtilCode/blob/master/zztutillibrary/src/main/java/com/zzt/zztutillibrary/ScheduledExecutorManager.java
 [ByteUtils.java]: https://github.com/zetingzhu/ZZTUtilCode/blob/master/zztutillibrary/src/main/java/com/zzt/zztutillibrary/ByteUtils.java
 
+
+
+gradlew bintrayUpload
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :zztutillibrary:bintrayUpload FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':zztutillibrary:bintrayUpload'.
+> javax.net.ssl.SSLException: Software caused connection abort: recv failed
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 59s
+27 actionable tasks: 2 executed, 25 up-to-date
+
+D:\ZZTAndroid\Android_Work\ZZTUtilCode>
+
+* What went wrong:
+A problem occurred configuring root project 'ZZTUtilCode'.
+> Could not resolve all artifacts for configuration ':classpath'.
+   > Could not download maven-artifact-manager.jar (org.apache.maven:maven-artifact-manager:2.2.1)
+      > Could not get resource 'https://jcenter.bintray.com/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.jar'.
+         > Could not GET 'https://jcenter.bintray.com/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.jar'.
+            > Software caused connection abort: recv failed
+
+
+
+D:\ZZTAndroid\Android_Work\ZZTUtilCode>gradlew bintrayUpload
+> Task :zztutillibrary:bintrayUpload FAILED
+> Task :bintrayPublish FAILED
+
+FAILURE: Build completed with 2 failures.
+
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':zztutillibrary:bintrayUpload'.
+> Could not create package 'com/zzt/ZZTUtilLibrary': HTTP/1.1 404 Not Found [message:Repo 'zzt' was not found]
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+==============================================================================
+
+2: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':bintrayPublish'.
+> Could not publish 'com/zzt/ZZTUtilLibrary/1.0.0': HTTP/1.1 404 Not Found [message:Repo 'zzt' was not found]
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+==============================================================================
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 19s
+28 actionable tasks: 25 executed, 3 up-to-date
+
+D:\ZZTAndroid\Android_Work\ZZTUtilCode>

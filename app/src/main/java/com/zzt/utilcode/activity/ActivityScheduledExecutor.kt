@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import com.blankj.utilcode.util.LogUtils
 import com.zzt.utilcode.R
-import com.zzt.zztutillibrary.ScheduledExecutorManager
+import com.zzt.utils.ScheduledExecutorManager
 import kotlinx.android.synthetic.main.activity_button_list.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -34,7 +34,8 @@ class ActivityScheduledExecutor : BaseActivity(){
     }
 
     private fun initView() {
-        mScheduledExecutorManager = ScheduledExecutorManager()
+        mScheduledExecutorManager =
+            ScheduledExecutorManager()
         LogUtils.dTag(TAG , "开始执行线程" )
         mScheduledExecutorManager!!.scheduleAtFixedRate({
             var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault() )
@@ -44,7 +45,8 @@ class ActivityScheduledExecutor : BaseActivity(){
     }
 
     private fun initView1() {
-        mScheduledExecutorManager = ScheduledExecutorManager(1 )
+        mScheduledExecutorManager =
+            ScheduledExecutorManager(1)
         LogUtils.dTag(TAG , "开始执行线程" )
         mScheduledExecutorManager!!.scheduleAtFixedRate({
 
@@ -69,7 +71,8 @@ class ActivityScheduledExecutor : BaseActivity(){
      * initView1 和 initView2 的区别为核心线程只有一个，核心线程只有一个的时候会分别执行两个不同的线程
      */
     private fun initView2() {
-        mScheduledExecutorManager = ScheduledExecutorManager(2 )
+        mScheduledExecutorManager =
+            ScheduledExecutorManager(2)
         LogUtils.dTag(TAG , "开始执行线程" )
         mScheduledExecutorManager!!.scheduleAtFixedRate({
 
@@ -91,7 +94,8 @@ class ActivityScheduledExecutor : BaseActivity(){
     }
 
     private fun initView3() {
-        mScheduledExecutorManager = ScheduledExecutorManager(3 )
+        mScheduledExecutorManager =
+            ScheduledExecutorManager(3)
         LogUtils.dTag(TAG , "开始执行线程" )
 
         mScheduledExecutorManager?.scheduleWithFixedDelay({

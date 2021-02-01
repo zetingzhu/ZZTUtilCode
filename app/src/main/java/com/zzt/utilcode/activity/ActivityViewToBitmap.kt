@@ -12,9 +12,9 @@ import com.blankj.utilcode.util.ImageUtils
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.ToastUtils
+import com.zzt.bitmaputil.ViewToBitmapUtil
 import com.zzt.utilcode.R
 import com.zzt.utilcode.helper.DialogHelper
-import com.zzt.zztutillibrary.ViewToBitmapUtil
 import kotlinx.android.synthetic.main.activity_view_to_bitmap.*
 import java.io.File
 
@@ -79,7 +79,8 @@ class ActivityViewToBitmap : AppCompatActivity() {
     private fun initView() {
 
         // 初始化view
-        val snapshot = ViewToBitmapUtil(ll_save_view)
+        val snapshot =
+            ViewToBitmapUtil(ll_save_view)
         val bitmap  = snapshot.getBitmap(  this@ActivityViewToBitmap , 300 , 500 )
 
         LogUtils.dTag(TAG, "bitmap 宽： " +   bitmap.width + " - 高：" + bitmap.height )
@@ -90,7 +91,8 @@ class ActivityViewToBitmap : AppCompatActivity() {
         // 保存图片到本地
         iv_save.setOnClickListener {
             // 初始化view
-            val snapshot = ViewToBitmapUtil(ll_save_view)
+            val snapshot =
+                ViewToBitmapUtil(ll_save_view)
             // 将view 转换成 bitmap
             val bitmapSrc  = snapshot.apply()
 

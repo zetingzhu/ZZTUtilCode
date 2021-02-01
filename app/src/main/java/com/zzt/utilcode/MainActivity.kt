@@ -1,18 +1,12 @@
 package com.zzt.utilcode
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
-import kotlinx.android.synthetic.main.activity_main.*
-import android.view.ViewGroup
-
-import android.widget.ArrayAdapter
 import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.zzt.utilcode.activity.ActivityGlide
 import com.zzt.utilcode.activity.ActivityScheduledExecutor
 import com.zzt.utilcode.activity.ActivityViewToBitmap
-import com.zzt.utilcode.view.FeatureView
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
