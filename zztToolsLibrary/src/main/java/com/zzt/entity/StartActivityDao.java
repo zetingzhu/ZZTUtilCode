@@ -17,6 +17,11 @@ public class StartActivityDao {
         this.arouter = arouter;
     }
 
+    public StartActivityDao(String title, Class<?> activity) {
+        this.title = title;
+        this.activity = activity;
+    }
+
     public StartActivityDao(String title, String description, Class<?> activity) {
         this.title = title;
         this.description = description;

@@ -22,8 +22,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
+    api 'androidx.appcompat:appcompat:1.2.0'
+    api 'com.google.android.material:material:1.2.1'
+    api 'androidx.constraintlayout:constraintlayout:2.0.4'
 }
 
-apply from: 'zzt-build.gradle'
+// 配置build.gradle
+apply from: 'zzt_build.gradle'
+//apply from: 'zzt_zip_build.gradle'
