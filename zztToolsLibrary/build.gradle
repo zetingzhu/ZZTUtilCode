@@ -8,7 +8,7 @@ android {
         minSdkVersion getRootProject().minSdkVersion
         targetSdkVersion getRootProject().targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.1.2"
     }
 
     buildTypes {
@@ -26,6 +26,7 @@ dependencies {
     api 'com.google.android.material:material:1.2.1'
     api 'androidx.constraintlayout:constraintlayout:2.0.4'
 }
+
 
 // 配置build.gradle
 apply from: 'zzt_build.gradle'
