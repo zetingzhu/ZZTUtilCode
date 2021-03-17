@@ -1,2 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zzt.toolslib" />
+        package="com.zzt.toolslib">
+
+    <application>
+        <activity android:name="com.zzt.activity.DefaultActivity"></activity>
+    </application>
+
+</manifest>

@@ -1,5 +1,7 @@
 package com.zzt.entity;
 
+import com.zzt.activity.DefaultActivity;
+
 /**
  * @author: zeting
  * @date: 2021/1/4
@@ -8,13 +10,23 @@ package com.zzt.entity;
 public class StartActivityDao {
     String title;
     String description;
-    Class<?> activity;
+    Class<?> activity; // 跳转class
+    int contentViewId;// 跳转的布局地址
+    boolean isDefaultClass;// 是否跳转默认class
     private String arouter;// 路由地址
 
     public StartActivityDao(String title, String description, String arouter) {
         this.title = title;
         this.description = description;
         this.arouter = arouter;
+    }
+
+    public StartActivityDao(String title, String description, int contentViewId) {
+        this.title = title;
+        this.description = description;
+        this.contentViewId = contentViewId;
+        this.activity = DefaultActivity.class;
+        this.isDefaultClass = true;
     }
 
     public StartActivityDao(String title, Class<?> activity) {
@@ -58,5 +70,21 @@ public class StartActivityDao {
 
     public void setArouter(String arouter) {
         this.arouter = arouter;
+    }
+
+    public int getContentViewId() {
+        return contentViewId;
+    }
+
+    public void setContentViewId(int contentViewId) {
+        this.contentViewId = contentViewId;
+    }
+
+    public boolean isDefaultClass() {
+        return isDefaultClass;
+    }
+
+    public void setDefaultClass(boolean defaultClass) {
+        isDefaultClass = defaultClass;
     }
 }

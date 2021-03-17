@@ -68,14 +68,25 @@ public class StartActivityRecyclerAdapter extends RecyclerView.Adapter<StartActi
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.title.setText(dataset.get(position).getTitle());
         holder.description.setText(dataset.get(position).getDescription());
-        final Class<?> activity = dataset.get(position).getActivity();
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (activity != null) {
-                    holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), activity));
-                } else if (listener != null) {
+                if (listener != null) {
                     listener.onItemClick(position, dataset.get(position));
+                }
+                Class<?> activity = dataset.get(position).getActivity();
+                if (dataset.get(position).isDefaultClass()) {
+                    int contentViewId = dataset.get(position).getContentViewId();
+                    if (contentViewId != 0) {
+                        Intent intent = new Intent(holder.itemView.getContext(), activity);
+                        intent.putExtra("layout_content_view_id", dataset.get(position).getContentViewId());
+                        holder.itemView.getContext().startActivity(intent);
+                    }
+                } else {
+                    if (activity != null) {
+                        holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), activity));
+                    }
                 }
             }
         });

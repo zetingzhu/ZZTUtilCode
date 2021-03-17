@@ -3,6 +3,7 @@ package com.zzt.utilcode
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.zzt.adapter.StartActivityRecyclerAdapter
 import com.zzt.entity.StartActivityDao
 import com.zzt.utilcode.activity.ActivityGlide
@@ -44,7 +45,9 @@ class MainActivity : AppCompatActivity() {
             StartActivityDao(
                 resources.getString(R.string.util_title_3),
                 ActivityScheduledExecutor::class.java
-            )
+            ),
+            StartActivityDao("默认跳转位置", "跳到一个只设置布局的 activity 中", R.layout.activity_only_layout)
+
         )
     }
 
@@ -52,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         // 设置适配器
         StartActivityRecyclerAdapter.setAdapterData(
             main_list,
-            LinearLayout.HORIZONTAL,
+            RecyclerView.VERTICAL,
             demos,
             null
         )
