@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,7 +86,12 @@ public class StartActivityRecyclerAdapter extends RecyclerView.Adapter<StartActi
                     }
                 } else {
                     if (activity != null) {
-                        holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), activity));
+                        Intent intent = new Intent(holder.itemView.getContext(), activity);
+                        Bundle bundleString = dataset.get(position).getBundleString();
+                        if (bundleString != null) {
+                            intent.putExtras(bundleString);
+                        }
+                        holder.itemView.getContext().startActivity(intent);
                     }
                 }
             }

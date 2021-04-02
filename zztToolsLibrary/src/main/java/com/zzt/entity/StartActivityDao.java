@@ -1,5 +1,7 @@
 package com.zzt.entity;
 
+import android.os.Bundle;
+
 import com.zzt.activity.DefaultActivity;
 
 /**
@@ -14,6 +16,7 @@ public class StartActivityDao {
     int contentViewId;// 跳转的布局地址
     boolean isDefaultClass;// 是否跳转默认class
     private String arouter;// 路由地址
+    private Bundle bundleString;// 跳转activit带入参数
 
     public StartActivityDao(String title, String description, String arouter) {
         this.title = title;
@@ -38,6 +41,21 @@ public class StartActivityDao {
         this.title = title;
         this.description = description;
         this.activity = activity;
+    }
+
+    public StartActivityDao(String title, String description, Class<?> activity, Bundle bundleString) {
+        this.title = title;
+        this.description = description;
+        this.activity = activity;
+        this.bundleString = bundleString;
+    }
+
+    public Bundle getBundleString() {
+        return bundleString;
+    }
+
+    public void setBundleString(Bundle bundleString) {
+        this.bundleString = bundleString;
     }
 
     public String getTitle() {
