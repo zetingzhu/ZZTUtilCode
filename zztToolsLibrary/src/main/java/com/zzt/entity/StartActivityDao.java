@@ -18,6 +18,11 @@ public class StartActivityDao {
     private String arouter;// 路由地址
     private Bundle bundleString;// 跳转activit带入参数
 
+    public StartActivityDao(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
     public StartActivityDao(String title, String description, String arouter) {
         this.title = title;
         this.description = description;

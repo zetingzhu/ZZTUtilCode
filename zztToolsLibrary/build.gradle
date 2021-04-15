@@ -8,7 +8,7 @@ android {
         minSdkVersion getRootProject().minSdkVersion
         targetSdkVersion getRootProject().targetSdkVersion
         versionCode 2
-        versionName "1.1.3"
+        versionName "1.1.4"
     }
 
     buildTypes {
