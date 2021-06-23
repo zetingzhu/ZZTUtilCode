@@ -31,17 +31,17 @@ import java.util.List;
 public class StartActivityRecyclerAdapter extends RecyclerView.Adapter<StartActivityRecyclerAdapter.ViewHolder> {
     private List<StartActivityDao> dataset;
 
-    private OnItemClickListener listener;
+    private OnItemClickListener<StartActivityDao> listener;
 
     public StartActivityRecyclerAdapter(List<StartActivityDao> dataset) {
         this.dataset = dataset;
     }
 
-    public static void setAdapterData(RecyclerView recyclerView, int orientation, StartActivityDao[] dataArray, OnItemClickListener lis) {
+    public static void setAdapterData(RecyclerView recyclerView, int orientation, StartActivityDao[] dataArray, OnItemClickListener<StartActivityDao> lis) {
         setAdapterData(recyclerView, orientation, Arrays.asList(dataArray), lis);
     }
 
-    public static void setAdapterData(RecyclerView recyclerView, int orientation, List<StartActivityDao> dataset, OnItemClickListener lis) {
+    public static void setAdapterData(RecyclerView recyclerView, int orientation, List<StartActivityDao> dataset, OnItemClickListener<StartActivityDao> lis) {
         if (recyclerView != null) {
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), orientation, false));
             StartActivityRecyclerAdapter adapter = new StartActivityRecyclerAdapter(dataset);
@@ -54,7 +54,7 @@ public class StartActivityRecyclerAdapter extends RecyclerView.Adapter<StartActi
         }
     }
 
-    public void setListener(OnItemClickListener listener) {
+    public void setListener(OnItemClickListener<StartActivityDao> listener) {
         this.listener = listener;
     }
 
@@ -74,7 +74,7 @@ public class StartActivityRecyclerAdapter extends RecyclerView.Adapter<StartActi
             @Override
             public void onClick(View v) {
                 if (listener != null) {
-                    listener.onItemClick(position, dataset.get(position));
+                    listener.onItemClick(holder.itemView, position, dataset.get(position));
                 }
                 Class<?> activity = dataset.get(position).getActivity();
                 if (dataset.get(position).isDefaultClass()) {
@@ -114,8 +114,8 @@ public class StartActivityRecyclerAdapter extends RecyclerView.Adapter<StartActi
         }
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(int position, Object data);
+    public interface OnItemClickListener<T> {
+        void onItemClick(View itemView, int position, T data);
     }
 
 }

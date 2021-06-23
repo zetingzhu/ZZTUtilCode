@@ -1,7 +1,11 @@
 package com.zzt.utilcode
 
+import android.content.Context
 import android.os.Bundle
-import android.widget.LinearLayout
+import android.util.TypedValue
+import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.zzt.adapter.StartActivityRecyclerAdapter
@@ -46,8 +50,10 @@ class MainActivity : AppCompatActivity() {
                 resources.getString(R.string.util_title_3),
                 ActivityScheduledExecutor::class.java
             ),
-            StartActivityDao("默认跳转位置", "跳到一个只设置布局的 activity 中", R.layout.activity_only_layout)
-
+            StartActivityDao("默认跳转位置", "跳到一个只设置布局的 activity 中", R.layout.activity_only_layout),
+            StartActivityDao("打开POP窗口，View 下方", "打开一个公共的 PopupWindow", "V1"),
+            StartActivityDao("打开POP窗口，View 上方", "打开一个公共的 PopupWindow", "V2"),
+            StartActivityDao("打开POP窗口，在屏幕中间", "打开一个公共的 PopupWindow", "V3")
         )
     }
 
@@ -56,8 +62,24 @@ class MainActivity : AppCompatActivity() {
         StartActivityRecyclerAdapter.setAdapterData(
             main_list,
             RecyclerView.VERTICAL,
-            demos,
-            null
-        )
+            demos
+        ) { itemView, position, data ->
+
+        }
     }
+
+    fun getContext(): Context {
+        return this@MainActivity
+    }
+
+    fun dp2px(context: Context, dpValue: Int): Int {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dpValue.toFloat(),
+            context.resources.displayMetrics
+        )
+            .toInt()
+    }
+
+
 }
