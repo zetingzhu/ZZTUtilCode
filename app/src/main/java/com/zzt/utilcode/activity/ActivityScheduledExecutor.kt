@@ -14,21 +14,21 @@ import java.util.concurrent.TimeUnit
  * Created by zeting
  * Date 2019-08-09.
  */
-class ActivityScheduledExecutor : BaseActivity(){
+class ActivityScheduledExecutor : BaseActivity() {
 
-    var mScheduledExecutorManager : ScheduledExecutorManager? = null
+    var mScheduledExecutorManager: ScheduledExecutorManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_button_list)
 
-        button1.setOnClickListener{
+        button1.setOnClickListener {
 //            initView()
 //            initView1()
             initView2()
 //            initView3()
         }
-        button2.setOnClickListener{
+        button2.setOnClickListener {
             stop()
         }
     }
@@ -36,34 +36,33 @@ class ActivityScheduledExecutor : BaseActivity(){
     private fun initView() {
         mScheduledExecutorManager =
             ScheduledExecutorManager()
-        LogUtils.dTag(TAG , "开始执行线程" )
+        LogUtils.dTag(TAG, "开始执行线程")
         mScheduledExecutorManager!!.scheduleAtFixedRate({
-            var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault() )
-            Log.d(TAG , "执行线程时间 1 :" + sdf.format( System.currentTimeMillis() ) )
-            TimeUnit.SECONDS.sleep(5 )
-        }, 1 , 4 , TimeUnit.SECONDS )
+            var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault())
+            Log.d(TAG, "执行线程时间 1 :" + sdf.format(System.currentTimeMillis()))
+            TimeUnit.SECONDS.sleep(5)
+        }, 1, 4, TimeUnit.SECONDS)
     }
 
     private fun initView1() {
-        mScheduledExecutorManager =
-            ScheduledExecutorManager(1)
-        LogUtils.dTag(TAG , "开始执行线程" )
+        mScheduledExecutorManager = ScheduledExecutorManager()
+        LogUtils.dTag(TAG, "开始执行线程")
         mScheduledExecutorManager!!.scheduleAtFixedRate({
 
-            var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault() )
+            var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault())
 //            LogUtils.dTag(TAG , "执行线程时间 1 " + sdf.format( System.currentTimeMillis() ) )
-            Log.d(TAG , "执行线程时间 1 :" + sdf.format( System.currentTimeMillis() ) )
+            Log.d(TAG, "执行线程时间 1 :" + sdf.format(System.currentTimeMillis()))
 
-            TimeUnit.SECONDS.sleep(5 )
-        }, 1 , 4 , TimeUnit.SECONDS )
+            TimeUnit.SECONDS.sleep(5)
+        }, 1, 4, TimeUnit.SECONDS)
 
         mScheduledExecutorManager?.scheduleAtFixedRate({
 
-            var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault() )
-            Log.d(TAG , "执行线程时间 2 :" + sdf.format( System.currentTimeMillis() ) )
+            var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault())
+            Log.d(TAG, "执行线程时间 2 :" + sdf.format(System.currentTimeMillis()))
 
-            TimeUnit.SECONDS.sleep(3 )
-        }, 1 , 2 , TimeUnit.SECONDS )
+            TimeUnit.SECONDS.sleep(3)
+        }, 1, 2, TimeUnit.SECONDS)
 
     }
 
@@ -72,44 +71,44 @@ class ActivityScheduledExecutor : BaseActivity(){
      */
     private fun initView2() {
         mScheduledExecutorManager =
-            ScheduledExecutorManager(2)
-        LogUtils.dTag(TAG , "开始执行线程" )
+            ScheduledExecutorManager()
+        LogUtils.dTag(TAG, "开始执行线程")
         mScheduledExecutorManager!!.scheduleAtFixedRate({
 
-            var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault() )
+            var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault())
 //            LogUtils.dTag(TAG , "执行线程时间 1 " + sdf.format( System.currentTimeMillis() ) )
-            Log.d(TAG , "执行线程时间 1 :" + sdf.format( System.currentTimeMillis() ) )
+            Log.d(TAG, "执行线程时间 1 :" + sdf.format(System.currentTimeMillis()))
 
-            TimeUnit.SECONDS.sleep(5 )
-        }, 1 , 4 , TimeUnit.SECONDS )
+            TimeUnit.SECONDS.sleep(5)
+        }, 1, 4, TimeUnit.SECONDS)
 
         mScheduledExecutorManager?.scheduleAtFixedRate({
 
-            var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault() )
-            Log.d(TAG , "执行线程时间 2 :" + sdf.format( System.currentTimeMillis() ) )
+            var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault())
+            Log.d(TAG, "执行线程时间 2 :" + sdf.format(System.currentTimeMillis()))
 
-            TimeUnit.SECONDS.sleep(3 )
-        }, 1 , 2 , TimeUnit.SECONDS )
+            TimeUnit.SECONDS.sleep(3)
+        }, 1, 2, TimeUnit.SECONDS)
 
     }
 
     private fun initView3() {
         mScheduledExecutorManager =
-            ScheduledExecutorManager(3)
-        LogUtils.dTag(TAG , "开始执行线程" )
+            ScheduledExecutorManager()
+        LogUtils.dTag(TAG, "开始执行线程")
 
         mScheduledExecutorManager?.scheduleWithFixedDelay({
 
-            var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault() )
-            Log.d(TAG , "执行线程时间 2 :" + sdf.format( System.currentTimeMillis() ) )
+            var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.getDefault())
+            Log.d(TAG, "执行线程时间 2 :" + sdf.format(System.currentTimeMillis()))
 
-            TimeUnit.SECONDS.sleep(3 )
-        }, 1 , 2 , TimeUnit.SECONDS )
+            TimeUnit.SECONDS.sleep(3)
+        }, 1, 2, TimeUnit.SECONDS)
 
     }
 
-    fun stop(){
-        LogUtils.dTag(TAG , "关闭 执行线程" )
+    fun stop() {
+        LogUtils.dTag(TAG, "关闭 执行线程")
         mScheduledExecutorManager?.stopExecutorService()
     }
 

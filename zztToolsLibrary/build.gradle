@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion getRootProject().minSdkVersion
         targetSdkVersion getRootProject().targetSdkVersion
-        versionCode 2
-        versionName "1.1.4"
+        versionCode 3
+        versionName "1.1.5"
     }
 
     buildTypes {

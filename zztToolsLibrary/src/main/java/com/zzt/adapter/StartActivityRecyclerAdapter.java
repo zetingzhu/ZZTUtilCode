@@ -66,13 +66,15 @@ public class StartActivityRecyclerAdapter extends RecyclerView.Adapter<StartActi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int pos) {
+        int position = holder.getAdapterPosition();
         holder.title.setText(dataset.get(position).getTitle());
         holder.description.setText(dataset.get(position).getDescription());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int position = holder.getAdapterPosition();
                 if (listener != null) {
                     listener.onItemClick(holder.itemView, position, dataset.get(position));
                 }
