@@ -8,7 +8,7 @@ android {
     defaultConfig {
         minSdkVersion getRootProject().minSdkVersion
         targetSdkVersion getRootProject().targetSdkVersion
-        versionCode 3
+        versionCode 4
         versionName "1.1.5"
     }
 
