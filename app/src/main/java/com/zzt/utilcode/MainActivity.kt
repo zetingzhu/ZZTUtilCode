@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             StartActivityDao("默认跳转位置", "跳到一个只设置布局的 activity 中", R.layout.activity_only_layout),
             StartActivityDao("打开POP窗口，View 下方", "打开一个公共的 PopupWindow", "V1"),
             StartActivityDao("打开POP窗口，View 上方", "打开一个公共的 PopupWindow", "V2"),
-            StartActivityDao("打开POP窗口，在屏幕中间", "打开一个公共的 PopupWindow", "V3")
+            StartActivityDao("打开POP窗口，在屏幕中间 124", "打开一个公共的 PopupWindow", "V3")
         )
     }
 
