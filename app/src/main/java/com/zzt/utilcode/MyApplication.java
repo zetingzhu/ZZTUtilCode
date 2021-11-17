@@ -81,7 +81,7 @@ public class MyApplication extends Application {
     private void initCrash() {
         CrashUtils.init(new CrashUtils.OnCrashListener() {
             @Override
-            public void onCrash(String crashInfo, Throwable e) {
+            public void onCrash(CrashUtils.CrashInfo crashInfo) {
                 // 日志打印
                 LogUtils.e(crashInfo);
                 // 重新应用

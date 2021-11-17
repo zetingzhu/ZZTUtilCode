@@ -8,15 +8,13 @@ import android.os.Bundle
 import android.os.Environment
 import androidx.appcompat.app.AppCompatActivity
 import com.blankj.utilcode.constant.PermissionConstants
-import com.blankj.utilcode.util.ImageUtils
-import com.blankj.utilcode.util.LogUtils
-import com.blankj.utilcode.util.PermissionUtils
-import com.blankj.utilcode.util.ToastUtils
+import com.blankj.utilcode.util.*
 import com.zzt.bitmaputil.ViewToBitmapUtil
 import com.zzt.utilcode.R
 import com.zzt.utilcode.helper.DialogHelper
 import kotlinx.android.synthetic.main.activity_view_to_bitmap.*
 import java.io.File
+import java.util.*
 
 /**
  *
@@ -24,15 +22,15 @@ import java.io.File
  * Date 2019-08-06.
  */
 class ActivityViewToBitmap : AppCompatActivity() {
-    companion object{
-        val TAG : String = ActivityViewToBitmap::class.java.simpleName
+    companion object {
+        val TAG: String = ActivityViewToBitmap::class.java.simpleName
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_to_bitmap)
 
-        requestPermission() ;
+        requestPermission();
 
         initView()
 
@@ -42,29 +40,37 @@ class ActivityViewToBitmap : AppCompatActivity() {
      * 权限申请
      */
     private fun requestPermission() {
-        var isGranted =  PermissionUtils.isGranted( PermissionConstants.STORAGE )
+        var isGranted = PermissionUtils.isGranted(PermissionConstants.STORAGE)
         LogUtils.dTag(TAG, "查找存储权限状态：$isGranted")
-        var isGranted1 =  PermissionUtils.isGranted( Manifest.permission.WRITE_EXTERNAL_STORAGE )
+        var isGranted1 = PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         LogUtils.dTag(TAG, "1查找存储权限状态：$isGranted1")
-        if ( !isGranted ){
+        if (!isGranted) {
             PermissionUtils.permission(PermissionConstants.STORAGE)
 //            PermissionUtils.permission(  Manifest.permission.WRITE_EXTERNAL_STORAGE ,  Manifest.permission.READ_EXTERNAL_STORAGE )
-                .rationale( object : PermissionUtils.OnRationaleListener{
-                    override fun rationale(shouldRequest: PermissionUtils.OnRationaleListener.ShouldRequest?) {
+                .rationale(object : PermissionUtils.OnRationaleListener {
+                    override fun rationale(
+                        p0: UtilsTransActivity,
+                        shouldRequest: PermissionUtils.OnRationaleListener.ShouldRequest
+                    ) {
                         LogUtils.eTag(TAG, "已经拒绝了申请存储权限")
                         if (shouldRequest != null) {
-                            DialogHelper.showRationaleDialog(this@ActivityViewToBitmap , shouldRequest)
+                            DialogHelper.showRationaleDialog(
+                                this@ActivityViewToBitmap,
+                                shouldRequest
+                            )
                         }
                     }
                 }) // 设置拒绝权限后再次请求的回调接口
                 .callback(object : PermissionUtils.FullCallback {
-                    override fun onGranted(permissionsGranted: List<String>) {
+                    override fun onGranted(permissionsGranted: MutableList<String>) {
                         LogUtils.dTag(TAG, "同意申请的权限" + permissionsGranted)
                     }
 
-                    override fun onDenied(permissionsDeniedForever: List<String>,
-                                          permissionsDenied: List<String>) {
-                        LogUtils.dTag(TAG, "拒绝申请的权限" +permissionsDeniedForever , permissionsDenied )
+                    override fun onDenied(
+                        permissionsDeniedForever: MutableList<String>,
+                        permissionsDenied: MutableList<String>
+                    ) {
+                        LogUtils.dTag(TAG, "拒绝申请的权限" + permissionsDeniedForever, permissionsDenied)
                         if (!permissionsDeniedForever.isEmpty()) {
                             DialogHelper.showOpenAppSettingDialog(this@ActivityViewToBitmap)
                             return
@@ -81,12 +87,12 @@ class ActivityViewToBitmap : AppCompatActivity() {
         // 初始化view
         val snapshot =
             ViewToBitmapUtil(ll_save_view)
-        val bitmap  = snapshot.getBitmap(  this@ActivityViewToBitmap , 300 , 500 )
+        val bitmap = snapshot.getBitmap(this@ActivityViewToBitmap, 300, 500)
 
-        LogUtils.dTag(TAG, "bitmap 宽： " +   bitmap.width + " - 高：" + bitmap.height )
-        LogUtils.dTag(TAG, "bitmap 设置信息： " +   bitmap.config.toString()  )
-        LogUtils.dTag(TAG, "bitmap 实际内存空间大小： " +  bitmap.byteCount )
-        LogUtils.dTag(TAG, "bitmap 复用占内存空间大小： " +  bitmap.allocationByteCount )
+        LogUtils.dTag(TAG, "bitmap 宽： " + bitmap.width + " - 高：" + bitmap.height)
+        LogUtils.dTag(TAG, "bitmap 设置信息： " + bitmap.config.toString())
+        LogUtils.dTag(TAG, "bitmap 实际内存空间大小： " + bitmap.byteCount)
+        LogUtils.dTag(TAG, "bitmap 复用占内存空间大小： " + bitmap.allocationByteCount)
 
         // 保存图片到本地
         iv_save.setOnClickListener {
@@ -94,21 +100,27 @@ class ActivityViewToBitmap : AppCompatActivity() {
             val snapshot =
                 ViewToBitmapUtil(ll_save_view)
             // 将view 转换成 bitmap
-            val bitmapSrc  = snapshot.apply()
+            val bitmapSrc = snapshot.apply()
 
             //系统相册目录
-            val path = File.separator + Environment.DIRECTORY_DCIM + File.separator + "Camera" + File.separator
+            val path =
+                File.separator + Environment.DIRECTORY_DCIM + File.separator + "Camera" + File.separator
             var appCacheDir: File? = File(Environment.getExternalStorageDirectory(), path)
             // 保存图片完全路径
             val takePhotoFile = File(appCacheDir, "share_" + System.currentTimeMillis() + ".png")
-            LogUtils.dTag(TAG, "保存图片路径： " +  takePhotoFile.absolutePath )
+            LogUtils.dTag(TAG, "保存图片路径： " + takePhotoFile.absolutePath)
             // 图片保存
-            val save = ImageUtils.save( bitmapSrc , takePhotoFile , Bitmap.CompressFormat.JPEG)
-            LogUtils.dTag(TAG, "保存图片成功状态： " +  save )
-            ToastUtils.showShort("保存图片状态：" + save )
+            val save = ImageUtils.save(bitmapSrc, takePhotoFile, Bitmap.CompressFormat.JPEG)
+            LogUtils.dTag(TAG, "保存图片成功状态： " + save)
+            ToastUtils.showShort("保存图片状态：" + save)
             // 最后通知图库更新
             this@ActivityViewToBitmap.getApplicationContext()
-                .sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(takePhotoFile)))
+                .sendBroadcast(
+                    Intent(
+                        Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+                        Uri.fromFile(takePhotoFile)
+                    )
+                )
 
         }
 

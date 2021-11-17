@@ -44,7 +44,7 @@ dependencies {
     implementation project(path: ':zztToolsLibrary')
 
     // 导入 https://github.com/Blankj/AndroidUtilCode
-    implementation 'com.blankj:utilcode:1.25.4'
+    implementation 'com.blankj:utilcodex:1.30.6'
     // 导入LeakCanary 内存检测
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-alpha-3'
     // glide 使用
