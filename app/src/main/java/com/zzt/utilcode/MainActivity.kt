@@ -2,12 +2,15 @@ package com.zzt.utilcode
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.zzt.adapter.BtnHorizontalRecyclerAdapter
 import com.zzt.adapter.StartActivityRecyclerAdapter
 import com.zzt.entity.StartActivityDao
 import com.zzt.utilcode.activity.ActivityGlide
@@ -29,8 +32,34 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initData()
-        initView()
+//        initData()
+//        initView()
+        initDataBtn()
+    }
+
+    private fun initDataBtn() {
+        var btnList = mutableListOf<String>()
+        btnList.add("第一个按钮")
+        btnList.add("第2个按钮")
+        btnList.add("第三个按钮")
+        btnList.add("第4个按钮")
+        btnList.add("第五个按钮")
+
+        BtnHorizontalRecyclerAdapter.setAdapterData(
+            main_list, btnList
+        ) { itemView, position, data ->
+            when (position) {
+                0 -> {
+                    Log.d(TAG, "点击了 0 ：$data")
+                }
+                1 -> {
+                    Log.d(TAG, "点击了 1 ：$data")
+                }
+                else -> {
+                    Log.d(TAG, "点击了 其他 ：$data")
+                }
+            }
+        }
     }
 
     private fun initData() {
