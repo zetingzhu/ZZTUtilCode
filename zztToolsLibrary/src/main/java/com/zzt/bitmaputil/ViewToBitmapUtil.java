@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-import androidx.core.content.ContextCompat;
 
 import android.graphics.Color;
 import android.view.View;

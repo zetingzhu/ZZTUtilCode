@@ -10,15 +10,22 @@ import com.zzt.activity.DefaultActivity;
  * 跳转到 activity 的列表对象
  */
 public class StartActivityDao {
-    String title;
-    String description;
-    Class<?> activity; // 跳转class
-    int contentViewId;// 跳转的布局地址
-    boolean isDefaultClass;// 是否跳转默认class
+    private long id;
+    private String title;
+    private String description;
+    private Class<?> activity; // 跳转class
+    private int contentViewId;// 跳转的布局地址
+    private boolean isDefaultClass;// 是否跳转默认class
     private String arouter;// 路由地址
     private Bundle bundleString;// 跳转activit带入参数
 
     public StartActivityDao(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
+    public StartActivityDao(long id, String title, String description) {
+        this.id = id;
         this.title = title;
         this.description = description;
     }
@@ -53,6 +60,14 @@ public class StartActivityDao {
         this.description = description;
         this.activity = activity;
         this.bundleString = bundleString;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Bundle getBundleString() {
