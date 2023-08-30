@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    namespace "com.zzt.utilcode"
+//    namespace "com.zzt.utilcode"
 
     compileSdkVersion getRootProject().compileSdkVersion
     buildToolsVersion getRootProject().buildToolsVersion

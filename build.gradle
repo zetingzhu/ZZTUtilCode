@@ -2,7 +2,7 @@
 apply from: "config.gradle"
 
 buildscript {
-    ext.kotlin_version = '1.7.10'
+    ext.kotlin_version = '1.5.31'
     repositories {
 //        maven {
 //            url "https://dl.bintray.com/zhuzeting/zzt"
