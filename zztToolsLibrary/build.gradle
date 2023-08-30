@@ -9,7 +9,7 @@ android {
         minSdkVersion getRootProject().minSdkVersion
         targetSdkVersion getRootProject().targetSdkVersion
         versionCode 5
-        versionName "1.2.1"
+        versionName "1.2.3"
     }
 
     buildTypes {
