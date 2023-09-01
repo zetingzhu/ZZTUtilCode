@@ -105,7 +105,7 @@ public class RecycleViewDecorationRemovePos extends RecyclerView.ItemDecoration 
         if (layoutManager instanceof LinearLayoutManager) {
             firstVisiblePosition = ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
         }
-        Log.d(TAG, "firstVisiblePosition:" + firstVisiblePosition);
+//        Log.d(TAG, "firstVisiblePosition:" + firstVisiblePosition);
 
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
