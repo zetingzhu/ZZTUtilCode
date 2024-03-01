@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.zzt.adapter.BtnHorizontalRecyclerAdapter
@@ -12,6 +13,7 @@ import com.zzt.entity.StartActivityDao
 import com.zzt.utilcode.activity.ActivityGlide
 import com.zzt.utilcode.activity.ActivityScheduledExecutor
 import com.zzt.utilcode.activity.ActivityViewToBitmap
+import com.zzt.utilcode.activity.TextAct
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -28,10 +30,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        initData()
+
+        var editText = findViewById<EditText>(R.id.editText)
+        editText.setSelection(0)
+
+        initData()
 //        initView()
-        initDataBtn()
+//        initDataBtn()
     }
+
+
+
+
 
     private fun initDataBtn() {
         var btnList = mutableListOf<String>()
@@ -48,9 +58,11 @@ class MainActivity : AppCompatActivity() {
                 0 -> {
                     Log.d(TAG, "点击了 0 ：$data")
                 }
+
                 1 -> {
                     Log.d(TAG, "点击了 1 ：$data")
                 }
+
                 else -> {
                     Log.d(TAG, "点击了 其他 ：$data")
                 }
@@ -60,6 +72,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initData() {
         demos = mutableListOf<StartActivityDao>(
+            StartActivityDao(
+                "测试页面", "",
+                TextAct::class.java
+            ),
             //图片
             StartActivityDao(
                 resources.getString(R.string.util_title_1),
@@ -75,14 +91,17 @@ class MainActivity : AppCompatActivity() {
                 resources.getString(R.string.util_title_3),
                 ActivityScheduledExecutor::class.java
             ),
-            StartActivityDao("默认跳转位置", "跳到一个只设置布局的 activity 中", R.layout.activity_only_layout),
+            StartActivityDao(
+                "默认跳转位置",
+                "跳到一个只设置布局的 activity 中",
+                R.layout.activity_only_layout
+            ),
             StartActivityDao("打开POP窗口，View 下方", "打开一个公共的 PopupWindow", "V1"),
             StartActivityDao("打开POP窗口，View 上方", "打开一个公共的 PopupWindow", "V2"),
-            StartActivityDao("打开POP窗口，在屏幕中间 124", "打开一个公共的 PopupWindow", "V3")
-        )
-    }
+            StartActivityDao("打开POP窗口，在屏幕中间 124", "打开一个公共的 PopupWindow", "V3"),
 
-    private fun initView() {
+            )
+
         // 设置适配器
         StartActivityRecyclerAdapter.setAdapterData(
             main_list,
@@ -91,6 +110,10 @@ class MainActivity : AppCompatActivity() {
         ) { itemView, position, data ->
 
         }
+    }
+
+    private fun initView() {
+
     }
 
     fun getContext(): Context {

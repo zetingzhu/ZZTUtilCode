@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zzt.utilcode">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <!--
     Allows Glide to monitor connectivity status and restart failed requests if users go from a
@@ -20,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
+        <activity
+            android:name=".activity.TextAct"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -32,23 +33,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.ActivityGlide"
             android:exported="false"
             android:label="Glide 使用"
-            android:screenOrientation="portrait"></activity>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ActivityViewToBitmap"
             android:label="View"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.ActivityScheduledExecutor"
             android:label="定时任务线程池"
             android:screenOrientation="portrait" />
-
     </application>
 
 </manifest>
