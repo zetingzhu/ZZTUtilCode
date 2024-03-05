@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * @author: zeting
@@ -13,10 +14,12 @@ public class TestClass {
     public static void main(String[] args) {
 //        ZFormat("3.14159265358979323846");
 
-        System.out.println("小数 》》 " + ZFormat("3.14159265358979323846", RoundingMode.HALF_UP, 3, 3));
-        System.out.println("小数 》》 " + ZFormat("333.3336", RoundingMode.HALF_UP, 3, 3));
-        System.out.println("小数 》》 " + ZFormat("444", RoundingMode.HALF_UP, 3, 5));
-        System.out.println("小数 》》 " + ZFormat("$555.6666666", RoundingMode.HALF_UP, 1, 3));
+        System.out.println("小数 》》 " + ZFormat("3.14159265358979323846", RoundingMode.HALF_UP, 3, 3, false));
+        System.out.println("小数 》》 " + ZFormat("333.3336", RoundingMode.HALF_UP, 3, 3, false));
+        System.out.println("小数 》》 " + ZFormat("444", RoundingMode.HALF_UP, 3, 5, false));
+        System.out.println("小数 》》 " + ZFormat("$555.6666666", RoundingMode.HALF_UP, 1, 3, false));
+        System.out.println("小数 》》 " + ZFormat("777777777888888.6666666", RoundingMode.HALF_UP, 3, 3, false));
+        System.out.println("小数 》》 " + formatRoundHalfUp("111122222233333344444455555.66666677777788888", 5, true));
     }
 
     public static String ZFormat(double value) {
@@ -65,28 +68,39 @@ public class TestClass {
      * 四舍五入保留小数
      */
     public static String formatRoundHalfUp(String value, int fractionDigits) {
-        return ZFormat(value, RoundingMode.HALF_UP, fractionDigits, 0);
+        return ZFormat(value, RoundingMode.HALF_UP, fractionDigits, 0, false);
+    }
+
+    /**
+     * 四舍五入保留小数
+     */
+    public static String formatRoundHalfUp(String value, int fractionDigits, boolean isGroup) {
+        return ZFormat(value, RoundingMode.HALF_UP, fractionDigits, 0, isGroup);
     }
 
     /**
      * 四舍五入保留小数
      */
     public static String formatRoundHalfUp(double value, int fractionDigits) {
-        return ZFormat(value, RoundingMode.HALF_UP, fractionDigits, 0);
+        return ZFormat(value, RoundingMode.HALF_UP, fractionDigits, 0, false);
+    }
+
+    public static String formatRoundHalfUp(double value, int fractionDigits, boolean isGroup) {
+        return ZFormat(value, RoundingMode.HALF_UP, fractionDigits, 0, isGroup);
     }
 
     /**
      * 四舍五入保留小数，最少保留多少位小数
      */
     public static String formatRoundHalfUp(String value, int fractionDigits, int fractionDigitsMin) {
-        return ZFormat(value, RoundingMode.HALF_UP, fractionDigits, fractionDigitsMin);
+        return ZFormat(value, RoundingMode.HALF_UP, fractionDigits, fractionDigitsMin, false);
     }
 
     /**
      * 四舍五入保留小数，最少保留多少位小数
      */
     public static String formatRoundHalfUp(double value, int fractionDigits, int fractionDigitsMin) {
-        return ZFormat(value, RoundingMode.HALF_UP, fractionDigits, fractionDigitsMin);
+        return ZFormat(value, RoundingMode.HALF_UP, fractionDigits, fractionDigitsMin, false);
     }
 
     /**
@@ -95,23 +109,24 @@ public class TestClass {
      * @param value             数字
      * @param roundingMode      舍入模式
      * @param fractionDigitsMax 保留最大小数
-     * @param fractionDigitsMin 保留最小小数位数
+     * @param fractionDigitsMin 保留最小小数位数，最少保留几位小数
      * @return
      */
-    public static String ZFormat(double value, RoundingMode roundingMode, int fractionDigitsMax, int fractionDigitsMin) {
-        return ZFormat(String.valueOf(value), roundingMode, fractionDigitsMax, fractionDigitsMin);
+    public static String ZFormat(double value, RoundingMode roundingMode, int fractionDigitsMax, int fractionDigitsMin, boolean isGroup) {
+        return ZFormat(String.valueOf(value), roundingMode, fractionDigitsMax, fractionDigitsMin, isGroup);
     }
 
     /**
      * 数字转换
      *
      * @param value             数字
+     * @param value             数字
      * @param roundingMode      舍入模式
      * @param fractionDigitsMax 保留最大小数
-     * @param fractionDigitsMin 保留最小小数位数
+     * @param fractionDigitsMin 保留最小小数位数，最少保留几位小数
      * @return
      */
-    public static String ZFormat(String value, RoundingMode roundingMode, int fractionDigitsMax, int fractionDigitsMin) {
+    public static String ZFormat(String value, RoundingMode roundingMode, int fractionDigitsMax, int fractionDigitsMin, boolean isGroup) {
         DecimalFormat numberDecimalFormat = null;
         try {
             BigDecimal bigValue = new BigDecimal(value);
@@ -122,6 +137,8 @@ public class TestClass {
             numberDecimalFormat.setMaximumFractionDigits(fractionDigitsMax);
             //设置小数部分的最小位数
             numberDecimalFormat.setMinimumFractionDigits(fractionDigitsMin);
+            // 设置数字格式化分组,展示千分符
+            numberDecimalFormat.setGroupingUsed(isGroup);
             return numberDecimalFormat.format(bigValue);
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,6 +149,8 @@ public class TestClass {
     private static final ThreadLocal<DecimalFormat> DF_THREAD_LOCAL = new ThreadLocal<DecimalFormat>() {
         @Override
         protected DecimalFormat initialValue() {
+//            return (DecimalFormat) NumberFormat.getInstance(new Locale("bg"));
+//            return (DecimalFormat) NumberFormat.getInstance(Locale.ENGLISH);
             return (DecimalFormat) NumberFormat.getInstance();
         }
     };
