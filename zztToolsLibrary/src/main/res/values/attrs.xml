@@ -10,4 +10,19 @@
         <attr name="qmui_maxNumber" format="integer" />
         <attr name="qmui_average_count" format="integer" />
     </declare-styleable>
+
+
+    <declare-styleable name="FloatLayout">
+<!--        对齐方式-->
+        <attr name="android:gravity" />
+        <!--        水平间距-->
+        <attr name="childHorizontalSpacing" format="dimension" />
+        <!--        垂直间距-->
+        <attr name="childVerticalSpacing" format="dimension" />
+<!--最多行数-->
+        <attr name="android:maxLines" />
+<!--最大size-->
+        <attr name="maxNumber" format="integer" />
+    </declare-styleable>
+
 </resources>
