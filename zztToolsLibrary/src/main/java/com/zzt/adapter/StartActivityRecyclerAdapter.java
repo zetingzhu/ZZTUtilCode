@@ -39,7 +39,7 @@ public class StartActivityRecyclerAdapter extends RecyclerView.Adapter<StartActi
         setAdapterData(recyclerView, orientation, Arrays.asList(dataArray), lis);
     }
 
-    public static void setAdapterData(RecyclerView recyclerView, int orientation, List<StartActivityDao> dataset, OnItemClickListener<StartActivityDao> lis) {
+    public static StartActivityRecyclerAdapter setAdapterData(RecyclerView recyclerView, int orientation, List<StartActivityDao> dataset, OnItemClickListener<StartActivityDao> lis) {
         if (recyclerView != null) {
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), orientation, false));
             StartActivityRecyclerAdapter adapter = new StartActivityRecyclerAdapter(dataset);
@@ -49,7 +49,9 @@ public class StartActivityRecyclerAdapter extends RecyclerView.Adapter<StartActi
             decoration.setDrawable(new ColorDrawable(Color.parseColor("#DFE4F8")));
             recyclerView.addItemDecoration(decoration);
             recyclerView.setAdapter(adapter);
+            return adapter;
         }
+        return null;
     }
 
     public void setListener(OnItemClickListener<StartActivityDao> listener) {
@@ -65,14 +67,14 @@ public class StartActivityRecyclerAdapter extends RecyclerView.Adapter<StartActi
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int pos) {
-        int position = holder.getAdapterPosition();
+        int position = holder.getAbsoluteAdapterPosition();
         holder.title.setText(dataset.get(position).getTitle());
         holder.description.setText(dataset.get(position).getDescription());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = holder.getAdapterPosition();
+                int position = holder.getAbsoluteAdapterPosition();
                 if (listener != null) {
                     listener.onItemClick(holder.itemView, position, dataset.get(position));
                 }
@@ -118,4 +120,11 @@ public class StartActivityRecyclerAdapter extends RecyclerView.Adapter<StartActi
         void onItemClick(View itemView, int position, T data);
     }
 
+    public List<StartActivityDao> getDataset() {
+        return dataset;
+    }
+
+    public void setDataset(List<StartActivityDao> dataset) {
+        this.dataset = dataset;
+    }
 }

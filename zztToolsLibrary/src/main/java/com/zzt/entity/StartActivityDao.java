@@ -30,12 +30,26 @@ public class StartActivityDao {
         this.description = description;
     }
 
+    /**
+     * 默认跳转协议标识的
+     *
+     * @param title
+     * @param description
+     * @param arouter
+     */
     public StartActivityDao(String title, String description, String arouter) {
         this.title = title;
         this.description = description;
         this.arouter = arouter;
     }
 
+    /**
+     * 默认提供一个布局的
+     *
+     * @param title
+     * @param description
+     * @param contentViewId
+     */
     public StartActivityDao(String title, String description, int contentViewId) {
         this.title = title;
         this.description = description;
@@ -49,6 +63,13 @@ public class StartActivityDao {
         this.activity = activity;
     }
 
+    /**
+     * 默认打开指定Activity 的
+     *
+     * @param title
+     * @param description
+     * @param activity
+     */
     public StartActivityDao(String title, String description, Class<?> activity) {
         this.title = title;
         this.description = description;

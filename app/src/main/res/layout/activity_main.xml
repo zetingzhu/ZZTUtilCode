@@ -22,13 +22,13 @@
         android:text="测试文本Top"
         android:textColor="@color/springgreen" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.zzt.views.ZtHorizontalRecycleView
         android:id="@+id/rv_list_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".act.ActRecycleViewV1" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.zzt.views.ZtVerticalRecycleView
         android:id="@+id/main_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"

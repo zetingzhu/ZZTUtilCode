@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        BtnHorizontalRecyclerAdapter.setAdapterData(rv_list_top, topListDialog, topListener)
+        rv_list_top.addListNotifyAdapter(topListDialog, topListener)
     }
 
     private fun initData() {
@@ -91,11 +91,13 @@ class MainActivity : AppCompatActivity() {
             )
 
         // 设置适配器
-        StartActivityRecyclerAdapter.setAdapterData(
-            main_list, RecyclerView.VERTICAL, demos
-        ) { itemView, position, data ->
+        main_list.addListNotifyAdapter(
+            demos,
+            object : StartActivityRecyclerAdapter.OnItemClickListener<StartActivityDao> {
+                override fun onItemClick(itemView: View?, position: Int, data: StartActivityDao?) {
 
-        }
+                }
+            })
     }
 
     private fun initView() {

@@ -26,17 +26,27 @@ public class BtnHorizontalRecyclerAdapter extends RecyclerView.Adapter<BtnHorizo
         this.dataset = dataset;
     }
 
-    public static void setAdapterData(RecyclerView recyclerView, List<String> dataset, OnItemClickListener<String> lis) {
+    public static BtnHorizontalRecyclerAdapter setAdapterData(RecyclerView recyclerView, List<String> dataset, OnItemClickListener<String> lis) {
         if (recyclerView != null) {
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), RecyclerView.HORIZONTAL, false));
             BtnHorizontalRecyclerAdapter adapter = new BtnHorizontalRecyclerAdapter(dataset);
             adapter.setListener(lis);
             recyclerView.setAdapter(adapter);
+            return adapter ;
         }
+        return null;
     }
 
     public void setListener(OnItemClickListener<String> listener) {
         this.listener = listener;
+    }
+
+    public List<String> getDataset() {
+        return dataset;
+    }
+
+    public void setDataset(List<String> dataset) {
+        this.dataset = dataset;
     }
 
     @NonNull
