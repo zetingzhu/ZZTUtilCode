@@ -16,7 +16,8 @@ import com.zzt.utilcode.activity.ActivityViewToBitmap
 import com.zzt.utilcode.activity.FloatAct
 import com.zzt.utilcode.activity.TextAct
 import com.zzt.utilcode.view.TextViewRoundClick
-import kotlinx.android.synthetic.main.activity_main.*
+import com.zzt.views.ZtHorizontalRecycleView
+import com.zzt.views.ZtVerticalRecycleView
 
 
 class MainActivity : AppCompatActivity() {
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        var rv_list_top = findViewById<ZtHorizontalRecycleView>(R.id.rv_list_top)
         rv_list_top.addListNotifyAdapter(topListDialog, topListener)
     }
 
@@ -89,7 +91,7 @@ class MainActivity : AppCompatActivity() {
             StartActivityDao("打开POP窗口，在屏幕中间 124", "打开一个公共的 PopupWindow", "V3"),
 
             )
-
+        var main_list = findViewById<ZtVerticalRecycleView>(R.id.main_list)
         // 设置适配器
         main_list.addListNotifyAdapter(
             demos,

@@ -4,15 +4,18 @@ import android.Manifest
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.*
 import com.zzt.bitmaputil.ViewToBitmapUtil
 import com.zzt.utilcode.R
 import com.zzt.utilcode.helper.DialogHelper
-import kotlinx.android.synthetic.main.activity_view_to_bitmap.*
 import java.io.File
 import java.util.*
 
@@ -70,7 +73,11 @@ class ActivityViewToBitmap : AppCompatActivity() {
                         permissionsDeniedForever: MutableList<String>,
                         permissionsDenied: MutableList<String>
                     ) {
-                        LogUtils.dTag(TAG, "拒绝申请的权限" + permissionsDeniedForever, permissionsDenied)
+                        LogUtils.dTag(
+                            TAG,
+                            "拒绝申请的权限" + permissionsDeniedForever,
+                            permissionsDenied
+                        )
                         if (!permissionsDeniedForever.isEmpty()) {
                             DialogHelper.showOpenAppSettingDialog(this@ActivityViewToBitmap)
                             return
@@ -83,7 +90,7 @@ class ActivityViewToBitmap : AppCompatActivity() {
     }
 
     private fun initView() {
-
+        var ll_save_view = findViewById<LinearLayout>(R.id.ll_save_view)
         // 初始化view
         val snapshot =
             ViewToBitmapUtil(ll_save_view)
@@ -92,8 +99,11 @@ class ActivityViewToBitmap : AppCompatActivity() {
         LogUtils.dTag(TAG, "bitmap 宽： " + bitmap.width + " - 高：" + bitmap.height)
         LogUtils.dTag(TAG, "bitmap 设置信息： " + bitmap.config.toString())
         LogUtils.dTag(TAG, "bitmap 实际内存空间大小： " + bitmap.byteCount)
-        LogUtils.dTag(TAG, "bitmap 复用占内存空间大小： " + bitmap.allocationByteCount)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            LogUtils.dTag(TAG, "bitmap 复用占内存空间大小： " + bitmap.allocationByteCount)
+        }
 
+        var iv_save = findViewById<ImageView>(R.id.iv_save)
         // 保存图片到本地
         iv_save.setOnClickListener {
             // 初始化view

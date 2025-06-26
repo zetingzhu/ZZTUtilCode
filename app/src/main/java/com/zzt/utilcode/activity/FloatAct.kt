@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.TextView
 import com.zzt.utilcode.R
 import com.zzt.views.ZFloatLayout
-import kotlinx.android.synthetic.main.activity_float.fll_layout
 
 class FloatAct : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +24,7 @@ class FloatAct : AppCompatActivity() {
             mData.add(value)
         }
 
+        var fll_layout = findViewById<ZFloatLayout>(R.id.fll_layout)
         fll_layout.setAdapter(object : ZFloatLayout.FloatAdapter() {
             override fun getCount(): Int {
                 return mData.size

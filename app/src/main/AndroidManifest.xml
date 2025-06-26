@@ -39,10 +39,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ActivityViewToBitmap"
+            android:exported="false"
             android:label="View"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ActivityScheduledExecutor"
+            android:exported="false"
             android:label="定时任务线程池"
             android:screenOrientation="portrait" />
     </application>

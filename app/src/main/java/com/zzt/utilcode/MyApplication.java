@@ -1,6 +1,10 @@
 package com.zzt.utilcode;
 
 import android.app.Application;
+
+
+import androidx.multidex.MultiDexApplication;
+
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.LogUtils;
@@ -12,7 +16,7 @@ import java.util.ArrayList;
  * Created by zeting
  * Date 2019-07-30.
  */
-public class MyApplication extends Application {
+public class MyApplication extends MultiDexApplication {
     private static MyApplication sInstance;
 
     public static MyApplication getInstance() {
@@ -25,7 +29,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Utils.init( this );
+        Utils.init(this);
 
         initLeakCanary();
         initLog();
@@ -76,7 +80,7 @@ public class MyApplication extends Application {
     }
 
     /**
-     *  初始化应用错误信息监听
+     * 初始化应用错误信息监听
      */
     private void initCrash() {
         CrashUtils.init(new CrashUtils.OnCrashListener() {

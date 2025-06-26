@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion getRootProject().minSdkVersion
         targetSdkVersion getRootProject().targetSdkVersion
-        versionCode 27
-        versionName "1.2.9"
+        versionCode 28
+        versionName "1.3.0"
     }
 
     buildTypes {

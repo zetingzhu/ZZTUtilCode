@@ -2,10 +2,10 @@ package com.zzt.utilcode.activity
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import com.blankj.utilcode.util.LogUtils
 import com.zzt.utilcode.R
 import com.zzt.utils.ScheduledExecutorManager
-import kotlinx.android.synthetic.main.activity_button_list.*
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -22,12 +22,15 @@ class ActivityScheduledExecutor : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_button_list)
 
+        var button1 = findViewById<Button>(R.id.button1)
         button1.setOnClickListener {
 //            initView()
 //            initView1()
             initView2()
 //            initView3()
         }
+
+        var button2 = findViewById<Button>(R.id.button2)
         button2.setOnClickListener {
             stop()
         }
